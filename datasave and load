@@ -1,0 +1,7 @@
+import torch
+torch.save(model.state_dict(),"model/model_name.pt")
+torch.save(optimizer.state_dict(),"results/model_name.pt")       #save model and optimiezer ，return a dict
+
+model_name.load_state_dict(torch.load("model/model_name.pt"))
+optimizer.load_state_dict(torch.load("results/model_name.pt"))   #load model and optimiezr，return a dict
+
