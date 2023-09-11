@@ -12,7 +12,7 @@
 
 
 
-分类问题的准确率提取
+#分类问题的准确率提取
   output=model(x)
   pred=output.max(dim=-1)[-1]  #返回值有俩，一个为最大值，一个为最大值的下标，
                                  # 后一个-1代表只接收下标，即这个输入最有可能是什么下标
@@ -65,7 +65,7 @@
 
 
 
-LSTM
+#LSTM
   batch_size=10   #句子的数量
   seq_len=20       #每个句子的长度，需要统一，但是注意不能太大，不然会导致acc一直不变化（未明白为什么）
   embedding_dim=30      #每个词语使用多长的向量表示，一般为512这些数，大一些会比较好
@@ -90,3 +90,30 @@ LSTM
   or
   output[:,-1,:]
 
+
+
+
+
+
+
+
+
+
+#定义一个模型
+import torch
+from torch import nn
+class Lr(nn.module):
+  def __init__(self):
+    super(Lr.self).__init__()
+    self.linear=nn.Linear(1,1)
+  def forward(self,x):
+    out=self.linear(x)
+    return out
+model=Lr()
+criterion=nn.MSEloss()
+optimizer=optim.SGD(model.parameters,lr=1e-3)
+for i in range(3000):
+  out=model(x)
+  loss=criterion(y,out)
+  if (i+1)%20 ==0:
+    print("EPOCH{}/{},LOSS:{:.6f}".format(i,3000,loss))
